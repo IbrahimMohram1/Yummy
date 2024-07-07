@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yummy App</title>
+    <link rel="shortcut icon" href="images/tasty.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div
+      class="lodaing position-fixed top-0 start-0 end-0 vh-100 justify-content-center align-items-center bg-black"
+      id="lodaing"
+    >
+      <div class="loader"></div>
+    </div>
+    <div class="side-nav min-vh-100 position-fixed d-flex col-md-3 top-0">
+      <div
+        class="nav-tab d-flex justify-content-between flex-column min-vh-100 p-4"
+      >
+        <div class="anchor-links">
+          <ul class="list-unstyled overflow-hidden">
+            <li id="Search" class="py-2 position-relative">Search</li>
+            <li id="Categories" class="py-2 position-relative">Categories</li>
+            <li id="Area" class="py-2 position-relative">Area</li>
+            <li id="Ingredients" class="py-2 position-relative">Ingredients</li>
+            <li id="ContactUs" class="py-2 position-relative">Contact Us</li>
+          </ul>
+        </div>
+        <div class="footer">
+          <div class="icons">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div class="copyRight">
+            <p>Copyright &copy; 2024 Yummy App By Ibrahim Mohram</p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="nav-head d-flex flex-column justify-content-between py-4 px-2 text-center bg-white text-black"
+      >
+        <img src="images/tasty.png" alt="YummyImage" srcset="" />
+        <i class="fa-solid fa-align-justify fa-1x open-icon"></i>
+        <div class="d-flex flex-column">
+          <i class="fa-solid fa-globe"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="min-vh-100 position-relative">
+      <div
+        class="inner-lodaing top-0 start-0 end-0 bottom-0 justify-content-center align-items-center"
+      >
+        <div class="loader"></div>
+      </div>
+      <div id="content" class="container">
+        <div class="row py-5 g-3" id="rowData"></div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

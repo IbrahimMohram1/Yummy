@@ -1,0 +1,117 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f9f6f6;
+  overflow: hidden;
+}
+.nav-head img {
+  width: 50px;
+}
+i {
+  cursor: pointer;
+}
+.anchor-links li{
+  cursor: pointer;
+  margin: 10px 0;
+}
+.nav-tab {
+  background-color: #0d0d0d;
+}
+.side-nav {
+  z-index: 99999 !important;
+}
+.meal-layer {
+  width: 100%;
+  height: 100%;
+  background-color: #f9f6f6ca;
+  top: 100%;
+  transition: all 0.5s;
+}
+.meal:hover .meal-layer {
+  top: 0;
+
+}
+
+.Area , .meal{
+  cursor: pointer;
+}
+::placeholder{
+  color: #f9f6f6 !important;
+}
+.form-control{
+  background-color: #0d0d0d !important;
+  color: #fff !important;
+}
+
+
+.inner-lodaing{
+  position: absolute;
+  display: flex;
+  z-index: 999 !important;
+  background-color: #0d0d0d;
+}
+#content{
+  display: none;
+}
+.lodaing{
+  display: flex;
+  z-index: 99999;
+}
+.loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 8px solid #d1914b;
+  box-sizing: border-box;
+  --c: no-repeat radial-gradient(farthest-side, #d64123 94%, #0000);
+  --b: no-repeat radial-gradient(farthest-side, #000 94%, #0000);
+  background:
+    var(--c) 11px 15px,
+    var(--b) 6px 15px,
+    var(--c) 35px 23px,
+    var(--b) 29px 15px,
+    var(--c) 11px 46px,
+    var(--b) 11px 34px,
+    var(--c) 36px 0px,
+    var(--b) 50px 31px,
+    var(--c) 47px 43px,
+    var(--b) 31px 48px,
+    #f6d353;
+  background-size: 15px 15px, 6px 6px;
+  animation: l4 3s infinite;
+}
+
+@keyframes l4 {
+  0% {
+    -webkit-mask: conic-gradient(#0000 0, #000 0)
+  }
+
+  16.67% {
+    -webkit-mask: conic-gradient(#0000 60deg, #000 0)
+  }
+
+  33.33% {
+    -webkit-mask: conic-gradient(#0000 120deg, #000 0)
+  }
+
+  50% {
+    -webkit-mask: conic-gradient(#0000 180deg, #000 0)
+  }
+
+  66.67% {
+    -webkit-mask: conic-gradient(#0000 240deg, #000 0)
+  }
+
+  83.33% {
+    -webkit-mask: conic-gradient(#0000 300deg, #000 0)
+  }
+
+  100% {
+    -webkit-mask: conic-gradient(#0000 360deg, #000 0)
+  }
+}
