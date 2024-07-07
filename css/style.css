@@ -25,6 +25,9 @@ i {
 .side-nav {
   z-index: 99999 !important;
 }
+.icons i{
+  margin: 10px 10px;
+}
 .meal-layer {
   width: 100%;
   height: 100%;

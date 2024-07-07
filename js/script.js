@@ -257,8 +257,8 @@ function displayDetails(data){
           <p>
             ${data.strInstructions}}
           </p>
-          <h3><span class="fw-bolder">Area : </span>${data.strArea}</h3>
-          <h3><span class="fw-bolder">Category : </span> ${data.strCategory}</h3>
+          <h3><span class="fw-bolder small text-success">Area : </span>${data.strArea}</h3>
+          <h3><span class="fw-bolder small text-info">Category : </span> ${data.strCategory}</h3>
           <h3>Repices :</h3>
           <ul class="list-unstyled d-flex g-4 flex-wrap">
          ${ingredient}
