@@ -255,7 +255,7 @@ function displayDetails(data){
         <div class="col-md-8 col-sm-12">
           <h2>institution</h2>
           <p>
-            ${data.strInstructions}}
+            ${data.strInstructions}
           </p>
           <h3><span class="fw-bolder small text-success">Area : </span>${data.strArea}</h3>
           <h3><span class="fw-bolder small text-info">Category : </span> ${data.strCategory}</h3>
