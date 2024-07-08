@@ -306,14 +306,13 @@ Search.addEventListener('click'  , function(){
 })
 
 async function searchByName(value){
-  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
   let data = await response.json() 
   console.log(data.meals)
-  displayLoading()
   setTimeout(() => {
-      displayMeal(data.meals)
-  }, 1500);
+      data.meals? displayMeal(data.meals): displayError()
+  }, 2500);
+
 }
 
 async function searchByFirstLetter(value){
@@ -321,8 +320,8 @@ async function searchByFirstLetter(value){
   console.log(data.meals)
   let data = await response.json() 
   setTimeout(() => {
-       displayMeal(data.meals)
-  }, 500000);
+      data.meals? displayMeal(data.meals): displayError()
+  }, 1500);
 
 }
 
