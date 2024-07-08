@@ -83,7 +83,7 @@ function displayMeal(data){
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
     
-        <div class="col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12">
           <div onclick="getMealDetails('${data[i].idMeal}')" class="meal position-relative overflow-hidden rounded-2">
             <img src="${data[i].strMealThumb}" alt="" class="w-100" />
             <div
@@ -110,7 +110,7 @@ function displayAllCat(data){
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `
-         <div class="col-md-3 col-sm-12">
+         <div class="col-lg-3 col-md-6 col-sm-12">
           <div onclick="getMealByCat('${data[i].strCategory}')" class="meal category position-relative overflow-hidden rounded-2">
             <img src="${data[i].strCategoryThumb}" alt="" class="w-100" />
             <div
@@ -142,7 +142,7 @@ function displayArea(data){
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
     
-        <div class="col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-6 col-sm-12">
           <div onclick="getMealByArea('${data[i].strArea}')" class="Area rounded-2 text-center">
           <i class="fa-solid fa-house text-white text-center"></i>
             <h6>${data[i].strArea}</h6>
@@ -169,7 +169,7 @@ function displayIngredients(data){
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
     
-        <div class="col-md-3 col-sm-12 mt-3">
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
           <div onclick="getMealByIngredient('${data[i].strIngredient}')" class="Area rounded-2 text-center">
           <i class="fa-brands fa-bity fa-3x my-3"></i>
             <h6>${data[i].strIngredient}</h6>

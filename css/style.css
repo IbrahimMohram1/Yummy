@@ -119,3 +119,20 @@ i {
     -webkit-mask: conic-gradient(#0000 360deg, #000 0)
   }
 }
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #rowData{
+    width: 75%;
+    margin-left: auto;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #rowData {
+      width: 75%;
+      margin: auto;
+    }
+}
