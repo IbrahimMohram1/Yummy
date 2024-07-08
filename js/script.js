@@ -110,14 +110,14 @@ function displayAllCat(data){
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `
-         <div class="col-lg-3 col-md-6 col-sm-12">
+         <div class="col-lg-4 col-md-6 col-sm-12">
           <div onclick="getMealByCat('${data[i].strCategory}')" class="meal category position-relative overflow-hidden rounded-2">
             <img src="${data[i].strCategoryThumb}" alt="" class="w-100" />
             <div
               class="meal-layer position-absolute text-black d-flex text-center flex-column align-items-center justify-content-center "
             >
               <h6>${data[i].strCategory}</h6>
-              <p>${data[i].strCategoryDescription.split(' ').slice(0,15).join(' ')}</p>
+              <p>${data[i].strCategoryDescription.split(' ').slice(0,10).join(' ')}</p>
             </div>
           </div>
         </div>
