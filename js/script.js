@@ -34,15 +34,17 @@ function displayLoading(){
  })
 
 $(".side-nav i.open-icon").on("click", function () {
-  if ($(".side-nav").css("left") == "0px") {
-    closeSide();
+  if ($(".nav-tab").css("width") == '0px') {
+        openSide();
+        console.log('hi');
   } else {
-    openSide();
+    closeSide();
+    console.log('hello');
   }
 });
-
+    let width = $(".nav-tab").outerWidth(true);
 function openSide() {
-  $(".side-nav").animate({ left: 0 }, 500);
+  $(".nav-tab").animate({ width: width }, 500);
   $(".open-icon").removeClass("fa-align-justify");
   $(".open-icon").addClass("fa-x");
   for (let i = 0; i < 5; i++) {
@@ -50,11 +52,10 @@ function openSide() {
       .eq(i)
       .animate({ top: 0 }, (i + 5) * 150);
   }
+
 }
 function closeSide() {
-  let width = $(".nav-tab").outerWidth();
-
-  $(".side-nav").animate({ left: -width }, 500);
+  $(".nav-tab").animate({ width: '0px' }, 500);
   $(".open-icon").addClass("fa-align-justify");
   $(".open-icon").removeClass("fa-x");
   for (let i = 0; i < 5; i++) {
@@ -62,13 +63,11 @@ function closeSide() {
       .eq(i)
       .animate({ top: 300 }, (i + 5) * 100);
   }
+
 }
-
-closeSide();
-
+closeSide()
 $(".anchor-links li").on('click' , function(){
   closeSide();
-
 })
 
 async function getMeals(term){

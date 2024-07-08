@@ -21,6 +21,7 @@ i {
 }
 .nav-tab {
   background-color: #0d0d0d;
+  display: flex;
 }
 .side-nav {
   z-index: 99999 !important;
