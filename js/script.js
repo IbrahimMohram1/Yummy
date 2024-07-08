@@ -317,7 +317,6 @@ async function searchByName(value){
 
 async function searchByFirstLetter(value){
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${value}`)
-  console.log(data.meals)
   let data = await response.json() 
   setTimeout(() => {
       data.meals? displayMeal(data.meals): displayError()
