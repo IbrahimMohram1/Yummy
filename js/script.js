@@ -312,19 +312,18 @@ async function searchByName(value){
   console.log(data.meals)
   displayLoading()
   setTimeout(() => {
-      data.meals? displayMeal(data.meals): displayError()
+      displayMeal(data.meals)
   }, 1500);
 }
 
 async function searchByFirstLetter(value){
-  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${value}`)
-  let data = await response.json() 
   console.log(data.meals)
-  displayLoading()
+  let data = await response.json() 
   setTimeout(() => {
-      data.meals? displayMeal(data.meals): displayError()
-  }, 1000);
+       displayMeal(data.meals)
+  }, 500000);
+
 }
 
 function displayError(){
