@@ -6,36 +6,36 @@ let Ingredients = document.getElementById('Ingredients')
 let Search = document.getElementById('Search')
 let contact = document.getElementById('ContactUs')
 let btn;
-function ShowLoading(){
-  $(document).ready(()=>{
-        $('.inner-lodaing').fadeIn(500)
-        $('#content').css('display' , 'none' , function(){
-        $('body').css('overflow' , 'hidden')
- })
-})
-}
-function displayLoading(){
-  $(document).ready(()=>{
-        $('.inner-lodaing').fadeOut(500 , function(){
-        $('body').css('overflow' , 'visible')
-        $('#content').css('display' , 'block')
-        })
+function ShowLoading() {
+  $(document).ready(() => {
+    $('.inner-lodaing').fadeIn(500)
+    $('#content').css('display', 'none', function () {
+      $('body').css('overflow', 'hidden')
+    })
   })
 }
- $(document).ready(()=>{
-  getMeals('').then(()=>{
-  $('.lodaing').fadeOut(1000 , function(){
-  $('#content').css('display' , 'block')
-  $('body').css('overflow' , 'visible')
-  $('.inner-lodaing').fadeOut(500)
+function displayLoading() {
+  $(document).ready(() => {
+    $('.inner-lodaing').fadeOut(500, function () {
+      $('body').css('overflow', 'visible')
+      $('#content').css('display', 'block')
+    })
   })
+}
+$(document).ready(() => {
+  getMeals('').then(() => {
+    $('.lodaing').fadeOut(1000, function () {
+      $('#content').css('display', 'block')
+      $('body').css('overflow', 'visible')
+      $('.inner-lodaing').fadeOut(500)
+    })
   })
 
- })
+})
 $(".side-nav i.open-icon").on("click", function () {
   if ($(".nav-tab").css("width") == '0px') {
-        openSide();
-        console.log('hi');
+    openSide();
+    console.log('hi');
   } else {
     closeSide();
     console.log('hello');
@@ -65,16 +65,16 @@ function closeSide() {
 
 }
 closeSide()
-$(".anchor-links li").on('click' , function(){
+$(".anchor-links li").on('click', function () {
   closeSide();
 })
-async function getMeals(term){
-    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
-    response = await response.json()
+async function getMeals(term) {
+  let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
+  response = await response.json()
   displayMeal(response.meals)
 }
 getMeals('');
-function displayMeal(data){
+function displayMeal(data) {
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
@@ -93,15 +93,15 @@ function displayMeal(data){
   }
   rowData.innerHTML = dataBox
 }
-async function getAllCat(){
-ShowLoading()
+async function getAllCat() {
+  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
   response = await response.json()
   console.log(response.categories);
   displayLoading()
-displayAllCat(response.categories)
+  displayAllCat(response.categories)
 }
-function displayAllCat(data){
+function displayAllCat(data) {
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `
@@ -112,26 +112,25 @@ function displayAllCat(data){
               class="meal-layer position-absolute text-black d-flex text-center flex-column align-items-center justify-content-center "
             >
               <h6>${data[i].strCategory}</h6>
-              <p>${data[i].strCategoryDescription.split(' ').slice(0,10).join(' ')}</p>
+              <p>${data[i].strCategoryDescription.split(' ').slice(0, 10).join(' ')}</p>
             </div>
           </div>
         </div>
     `
   }
-    rowData.innerHTML = dataBox
+  rowData.innerHTML = dataBox
 }
-Categories.addEventListener('click' , function(){
-getAllCat()
-
+Categories.addEventListener('click', function () {
+  getAllCat()
 })
-async function getArea(){
-ShowLoading()
-   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
+async function getArea() {
+  ShowLoading()
+  let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
   response = await response.json()
   displayLoading()
   displayArea(response.meals)
 }
-function displayArea(data){
+function displayArea(data) {
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
@@ -146,18 +145,18 @@ function displayArea(data){
   }
   rowData.innerHTML = dataBox
 }
-Area.addEventListener('click' , function(){
-getArea()
+Area.addEventListener('click', function () {
+  getArea()
 })
-async function getIngredients(){
-ShowLoading()
-   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
+async function getIngredients() {
+  ShowLoading()
+  let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
   response = await response.json()
   console.log(response.meals);
   displayLoading()
-  displayIngredients(response.meals.slice(0,20))
+  displayIngredients(response.meals.slice(0, 20))
 }
-function displayIngredients(data){
+function displayIngredients(data) {
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
     dataBox += `  
@@ -166,33 +165,33 @@ function displayIngredients(data){
           <div onclick="getMealByIngredient('${data[i].strIngredient}')" class="Area rounded-2 text-center">
           <i class="fa-brands fa-bity fa-3x my-3"></i>
             <h6>${data[i].strIngredient}</h6>
-            <p>${data[i].strDescription ?.split(' ').slice(0,15).join(' ')}</p>
+            <p>${data[i].strDescription?.split(' ').slice(0, 15).join(' ')}</p>
           </div> 
         </div>
     `
   }
   rowData.innerHTML = dataBox
 }
-Ingredients.addEventListener('click' , function(){
-getIngredients()
+Ingredients.addEventListener('click', function () {
+  getIngredients()
 })
-async function getMealByCat(categorie){
+async function getMealByCat(categorie) {
   ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
   response = await response.json()
   displayLoading()
   displayMeal(response.meals)
 }
-async function getMealByArea(location){
-ShowLoading()
+async function getMealByArea(location) {
+  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${location}`)
   response = await response.json()
   console.log(response.meals);
   displayLoading()
   displayMeal(response.meals)
 }
-async function getMealByIngredient(ingredients){
-ShowLoading()
+async function getMealByIngredient(ingredients) {
+  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
   response = await response.json()
   console.log(response);
@@ -200,35 +199,35 @@ ShowLoading()
   displayMeal(response.meals)
 
 }
-async function getMealDetails(Id){
+async function getMealDetails(Id) {
   closeSide()
-ShowLoading()
+  ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${Id}`)
   response = await response.json()
   displayLoading()
   displayDetails(response.meals[0])
 
 }
-function displayDetails(data){
-    let ingredient = ''
- 
-  for(let i = 1 ; i <= 20 ; i++){
-    if(data[`strIngredient${i}`] && data[`strIngredient${i}`] ){
-      ingredient +=`
+function displayDetails(data) {
+  let ingredient = ''
+
+  for (let i = 1; i <= 20; i++) {
+    if (data[`strIngredient${i}`] && data[`strIngredient${i}`]) {
+      ingredient += `
                   <li class="alert alert-info m-3 p-2"> ${data[`strMeasure${i}`]} ${data[`strIngredient${i}`]}</li>
 
       `
     }
   }
-     let tags = data.strTags?.split(',')
-     if(!tags) tags = []
-    tagsStr = ''
-     for(let i = 0 ; i < tags.length ;i++){
-      tagsStr +=`
+  let tags = data.strTags?.split(',')
+  if (!tags) tags = []
+  tagsStr = ''
+  for (let i = 0; i < tags.length; i++) {
+    tagsStr += `
                         <li class="alert alert-danger m-3 p-2"> ${tags[i]}</li>
 
       `
-     }
+  }
 
   let dataBox = `
         <div class="col-md-4 col-sm-12">
@@ -244,8 +243,8 @@ function displayDetails(data){
           <p>
             ${data.strInstructions}
           </p>
-          <h3><span class="fw-bolder small text-success">Area : </span>${data.strArea}</h3>
-          <h3><span class="fw-bolder small text-info">Category : </span> ${data.strCategory}</h3>
+          <h3><span class="fw-bolder small">Area : </span>${data.strArea}</h3>
+          <h3><span class="fw-bolder small">Category : </span> ${data.strCategory}</h3>
           <h3>Repices :</h3>
           <ul class="list-unstyled d-flex g-4 flex-wrap">
          ${ingredient}
@@ -261,8 +260,8 @@ function displayDetails(data){
   `
   rowData.innerHTML = dataBox
 }
-function displaySreach(){
-  rowData.innerHTML =`
+function displaySreach() {
+  rowData.innerHTML = `
   <div class="container w-75">
       <div class="row py-4">
         <div class="col-md-6">
@@ -287,33 +286,32 @@ function displaySreach(){
   `
 
 }
-Search.addEventListener('click'  , function(){
+Search.addEventListener('click', function () {
   displaySreach()
 })
-async function searchByName(value){
+async function searchByName(value) {
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
-  let data = await response.json() 
+  let data = await response.json()
   console.log(data.meals)
   setTimeout(() => {
-      data.meals? displayMeal(data.meals): displayError()
+    data.meals ? displayMeal(data.meals) : displayError()
   }, 2500);
 
 }
-async function searchByFirstLetter(value){
+async function searchByFirstLetter(value) {
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${value}`)
-  let data = await response.json() 
+  let data = await response.json()
   setTimeout(() => {
-      data.meals? displayMeal(data.meals): displayError()
+    data.meals ? displayMeal(data.meals) : displayError()
   }, 1500);
 
 }
-function displayError(){
-  rowData.innerHTML =`
+function displayError() {
+  rowData.innerHTML = `
               <h6 class="alert alert-danger text-center p-3">No Found Data Please Enter A Valid Value</h6>
 `
-
 }
-function contactUs(){
+function contactUs() {
   rowData.innerHTML = `
    <div
           class="contact min-vh-100 d-flex justify-content-center align-items-center"
@@ -402,81 +400,77 @@ function contactUs(){
             </button>
           </div>
         </div>`
-       btn = document.getElementById('btnSubmit')
+  btn = document.getElementById('btnSubmit')
 
 }
-contact.addEventListener('click' , function(){
+contact.addEventListener('click', function () {
   contactUs()
 
 })
-function validationAllInputs( ){
+function validationAllInputs() {
 
-   if(userNameValidation()){
+  if (userNameValidation()) {
     document.getElementById('userName').nextElementSibling.classList.replace('d-block', 'd-none')
-  } else{
+
+  } else {
     document.getElementById('userName').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userMailValidation()){
+  if (userMailValidation()) {
     document.getElementById('userMail').nextElementSibling.classList.replace('d-block', 'd-none')
   }
-  else{
+  else {
     document.getElementById('userMail').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userPhoneValidation()){
+  if (userPhoneValidation()) {
     document.getElementById('userPhone').nextElementSibling.classList.replace('d-block', 'd-none')
   }
-  else{
+  else {
     document.getElementById('userPhone').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userAgeValidation()){
+  if (userAgeValidation()) {
     document.getElementById('userAge').nextElementSibling.classList.replace('d-block', 'd-none')
   }
-  else{
+  else {
     document.getElementById('userAge').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userPassValidation()){
+  if (userPassValidation()) {
     document.getElementById('userPass').nextElementSibling.classList.replace('d-block', 'd-none')
   }
-  else{
+  else {
     document.getElementById('userPass').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userRePassValidation()){
+  if (userRePassValidation()) {
     document.getElementById('userRePass').nextElementSibling.classList.replace('d-block', 'd-none')
   }
-  else{
+  else {
     document.getElementById('userRePass').nextElementSibling.classList.replace('d-none', 'd-block')
   }
-  if(userNameValidation() && userMailValidation() && userAgeValidation()&&userPhoneValidation()&& userPassValidation()&& userRePassValidation() == true){
+  if (userNameValidation() && userMailValidation() && userAgeValidation() && userPhoneValidation() && userPassValidation() && userRePassValidation() == true) {
     btn.removeAttribute('disabled')
     console.log('valid');
   }
-  else{
-        btn.setAttribute('disabled' , true)
-        console.log('Novalid');
+  else {
+    btn.setAttribute('disabled', true)
+    console.log('Novalid');
 
   }
- 
-}
-function userNameValidation(){
-  return ( /^[A-Za-z 0-9]{3,15}$/.test(document.getElementById('userName').value))
-}
-function userMailValidation(){
-  return ( /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(document.getElementById('userMail').value))
-}
-function userPhoneValidation(){
-  return ( /^01[0125][0-9]{8}$/.test(document.getElementById('userPhone').value))
-}
-function userAgeValidation(){
-  return ( /^(1[89]|[2-9]\d)$/.test(document.getElementById('userAge').value))
-}
-function userPassValidation(){
-  return ( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/.test(document.getElementById('userPass').value))
-}
-function userRePassValidation(){
-return ( document.getElementById('userPass').value == document.getElementById('userRePass').value)
-}
 
-
-function inputsValidtion(){
- 
+}
+function userNameValidation() {
+  return (/^[A-Za-z 0-9]{3,15}$/.test(document.getElementById('userName').value))
+}
+function userMailValidation() {
+  return (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(document.getElementById('userMail').value))
+}
+function userPhoneValidation() {
+  return (/^01[0125][0-9]{8}$/.test(document.getElementById('userPhone').value))
+}
+function userAgeValidation() {
+  return (/^(1[89]|[2-9]\d)$/.test(document.getElementById('userAge').value))
+}
+function userPassValidation() {
+  return (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/.test(document.getElementById('userPass').value))
+}
+function userRePassValidation() {
+  return (document.getElementById('userPass').value == document.getElementById('userRePass').value)
 }
