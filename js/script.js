@@ -32,7 +32,6 @@ function displayLoading(){
   })
 
  })
-
 $(".side-nav i.open-icon").on("click", function () {
   if ($(".nav-tab").css("width") == '0px') {
         openSide();
@@ -42,7 +41,7 @@ $(".side-nav i.open-icon").on("click", function () {
     console.log('hello');
   }
 });
-    let width = $(".nav-tab").outerWidth(true);
+let width = $(".nav-tab").outerWidth(true);
 function openSide() {
   $(".nav-tab").animate({ width: width }, 500);
   $(".open-icon").removeClass("fa-align-justify");
@@ -69,15 +68,12 @@ closeSide()
 $(".anchor-links li").on('click' , function(){
   closeSide();
 })
-
 async function getMeals(term){
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
     response = await response.json()
   displayMeal(response.meals)
 }
 getMeals('');
-
-
 function displayMeal(data){
   let dataBox = ''
   for (let i = 0; i < data.length; i++) {
@@ -97,7 +93,6 @@ function displayMeal(data){
   }
   rowData.innerHTML = dataBox
 }
-
 async function getAllCat(){
 ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
@@ -129,7 +124,6 @@ Categories.addEventListener('click' , function(){
 getAllCat()
 
 })
-
 async function getArea(){
 ShowLoading()
    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
@@ -155,7 +149,6 @@ function displayArea(data){
 Area.addEventListener('click' , function(){
 getArea()
 })
-
 async function getIngredients(){
 ShowLoading()
    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
@@ -183,7 +176,6 @@ function displayIngredients(data){
 Ingredients.addEventListener('click' , function(){
 getIngredients()
 })
-
 async function getMealByCat(categorie){
   ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`)
@@ -191,8 +183,6 @@ async function getMealByCat(categorie){
   displayLoading()
   displayMeal(response.meals)
 }
-
-
 async function getMealByArea(location){
 ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${location}`)
@@ -201,7 +191,6 @@ ShowLoading()
   displayLoading()
   displayMeal(response.meals)
 }
-
 async function getMealByIngredient(ingredients){
 ShowLoading()
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
@@ -220,7 +209,6 @@ ShowLoading()
   displayDetails(response.meals[0])
 
 }
-
 function displayDetails(data){
     let ingredient = ''
  
@@ -273,8 +261,6 @@ function displayDetails(data){
   `
   rowData.innerHTML = dataBox
 }
-
-
 function displaySreach(){
   rowData.innerHTML =`
   <div class="container w-75">
@@ -304,7 +290,6 @@ function displaySreach(){
 Search.addEventListener('click'  , function(){
   displaySreach()
 })
-
 async function searchByName(value){
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`)
   let data = await response.json() 
@@ -314,7 +299,6 @@ async function searchByName(value){
   }, 2500);
 
 }
-
 async function searchByFirstLetter(value){
   let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${value}`)
   let data = await response.json() 
@@ -323,16 +307,13 @@ async function searchByFirstLetter(value){
   }, 1500);
 
 }
-
 function displayError(){
   rowData.innerHTML =`
               <h6 class="alert alert-danger text-center p-3">No Found Data Please Enter A Valid Value</h6>
 `
 
 }
-
 function contactUs(){
-
   rowData.innerHTML = `
    <div
           class="contact min-vh-100 d-flex justify-content-center align-items-center"
@@ -347,7 +328,9 @@ function contactUs(){
                   placeholder="Enter Your Name"
                   type="text"
                 />
-           
+                <div class="p-3 my-2 d-none">
+                <span class="alert alert-danger" > Your Name Must Have a 3 Characters </span>
+                </div>
               </div>
               <div class="col-md-6">
                 <input
@@ -357,7 +340,9 @@ function contactUs(){
                   placeholder="Enter Your Email"
                   type="email"
                 />
-         
+              <div class="p-3 my-2 d-none">
+                <span class="alert alert-danger" > Please Enter A Valid Mail </span>
+                </div>
               </div>
               <div class="col-md-6">
                 <input
@@ -367,7 +352,9 @@ function contactUs(){
                   placeholder="Enter Your Phone"
                   type="text"
                 />
-          
+               <div class="p-3 my-2 d-none">
+                <span class="alert alert-danger" > Please Enter A Valid Phone Number  </span>
+                </div>
               </div>
               <div class="col-md-6">
                 <input
@@ -377,7 +364,9 @@ function contactUs(){
                   placeholder="Enter Your Age"
                   type="number"
                 />
-        
+           <div class="p-3 my-2 d-none">
+                <span class="alert alert-danger" > Your Age 18 > 89 </span>
+                </div>
               </div>
               <div class="col-md-6">
                 <input
@@ -387,7 +376,9 @@ function contactUs(){
                   placeholder="Enter Your Password"
                   type="password"
                 />
-           
+             <div class=" my-2 d-none">
+                <span class="alert alert-danger p-0" >Your Password Must a Contain  5 Numbers and Capital ,  Small character and Special character</span>
+                </div>
               </div>
               <div class="col-md-6">
                 <input
@@ -397,6 +388,9 @@ function contactUs(){
                   placeholder="RePassword"
                   type="password"
                 />
+                <div class="p-3 my-2 d-none">
+                <span class="alert alert-danger" >Your Password is Not Match</span>
+                </div>
               </div>
             </div>
             <button
@@ -415,32 +409,63 @@ contact.addEventListener('click' , function(){
   contactUs()
 
 })
-
 function validationAllInputs( ){
+
+   if(userNameValidation()){
+    document.getElementById('userName').nextElementSibling.classList.replace('d-block', 'd-none')
+  } else{
+    document.getElementById('userName').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
+  if(userMailValidation()){
+    document.getElementById('userMail').nextElementSibling.classList.replace('d-block', 'd-none')
+  }
+  else{
+    document.getElementById('userMail').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
+  if(userPhoneValidation()){
+    document.getElementById('userPhone').nextElementSibling.classList.replace('d-block', 'd-none')
+  }
+  else{
+    document.getElementById('userPhone').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
+  if(userAgeValidation()){
+    document.getElementById('userAge').nextElementSibling.classList.replace('d-block', 'd-none')
+  }
+  else{
+    document.getElementById('userAge').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
+  if(userPassValidation()){
+    document.getElementById('userPass').nextElementSibling.classList.replace('d-block', 'd-none')
+  }
+  else{
+    document.getElementById('userPass').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
+  if(userRePassValidation()){
+    document.getElementById('userRePass').nextElementSibling.classList.replace('d-block', 'd-none')
+  }
+  else{
+    document.getElementById('userRePass').nextElementSibling.classList.replace('d-none', 'd-block')
+  }
   if(userNameValidation() && userMailValidation() && userAgeValidation()&&userPhoneValidation()&& userPassValidation()&& userRePassValidation() == true){
     btn.removeAttribute('disabled')
     console.log('valid');
   }
   else{
         btn.setAttribute('disabled' , true)
-
         console.log('Novalid');
 
   }
  
 }
-
 function userNameValidation(){
   return ( /^[A-Za-z 0-9]{3,15}$/.test(document.getElementById('userName').value))
 }
-
 function userMailValidation(){
   return ( /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(document.getElementById('userMail').value))
 }
 function userPhoneValidation(){
   return ( /^01[0125][0-9]{8}$/.test(document.getElementById('userPhone').value))
 }
-
 function userAgeValidation(){
   return ( /^(1[89]|[2-9]\d)$/.test(document.getElementById('userAge').value))
 }
@@ -448,23 +473,10 @@ function userPassValidation(){
   return ( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/.test(document.getElementById('userPass').value))
 }
 function userRePassValidation(){
-  return document.getElementById('userRePass').value == document.getElementById('userPass').value
+return ( document.getElementById('userPass').value == document.getElementById('userRePass').value)
 }
 
 
-
-//     name
-// email
-
-//   userPhone
-//  age
-//  pass
-
-
-
- //   let userName = document.getElementById('userName')
-  // let userMail = document.getElementById('userMail')
-  // let userPhone = document.getElementById('userPhone')
-  // let userAge = document.getElementById('userAge')
-  // let userPass = document.getElementById('userPass')
-  // let userRePass = document.getElementById('userRePass')
+function inputsValidtion(){
+ 
+}
